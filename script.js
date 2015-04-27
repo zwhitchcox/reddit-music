@@ -42,7 +42,6 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     })
     function playVid() {
       player.playVideo()
-      addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
     }
     function onPlayerReady(event) {
       player.cuePlaylist($scope.vids)
@@ -50,8 +49,8 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     }
     $scope.waiting = false
     function onPlayerStateChange(event) {
+      addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
       if (player.getPlayerState()===0) {
-
         setTimeout(function(){playVid()},3000)
       }
     }
