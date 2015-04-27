@@ -58,8 +58,11 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
         ids = JSON.parse(localStorage["ids"]);
       }
       if (!$.inArray(id, ids)) {
+        console.log("not in")
         ids.push(id)
         localStorage["ids"] = JSON.stringify(ids);
+      } else {
+        console.log('in')
       }
     }
   }
