@@ -58,7 +58,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     function onPlayerStateChange(event) {
       try {addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)}
       catch (e) {}
-      if (player.getPlayerState()===0) {
+      if (event.target.getPlayerState()===0) {
         setTimeout(function(){player.playVideo()},3000)
       }
     }
