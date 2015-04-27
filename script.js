@@ -50,15 +50,14 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       }
     }
     function addVidIdToStorage (id) {
-      if (typeof(Storage) != "undefined") {
-        if (localStorage.getItem("ids") === null) {
-          localStorage.setItem("ids", '');
-        } else {
-          var ids = localStorage.getItem("ids")
-          ids.push(id)
-          localStorage.setItem("ids", ids)
-        }
+      var ids
+      if (localStorage === null || localStorage ===undefined) {
+        ids = []
+      } else {
+        ids = JSON.parse(localStorage["ids"]);
       }
+      ids.push(id)
+      localStorage["ids"] = JSON.stringify(ids);
     }
   }
 }]);
