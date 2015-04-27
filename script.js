@@ -52,16 +52,13 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     }
     function addVidIdToStorage (id) {
       var ids;
-      if (localStorage['ids'] === null || localStorage['ids'] ===undefined
-      || localStorage === '') {
+      if (localStorage['ids'] === null || localStorage['ids'] ===undefined || localStorage === '') {
         ids = []
       } else {
-
         ids = JSON.parse(localStorage["ids"]);
       }
       ids.push(id)
       localStorage["ids"] = JSON.stringify(ids);
     }
-  }
 }]);
 })(window.angular);
