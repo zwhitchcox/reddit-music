@@ -60,5 +60,6 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       ids.push(id)
       localStorage["ids"] = JSON.stringify(ids);
     }
+  }
 }]);
 })(window.angular);
