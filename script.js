@@ -75,7 +75,8 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       size:'mini'
     })
     .on('switchChange.bootstrapSwitch', function(event, state) {
-      $scope.$apply($scope.omitRedundancies = state; $scope.getVids())
+      $scope.$apply($scope.getVids())
+      $scope.$apply($scope.omitRedundancies = state)
     })
   }
 }]);
