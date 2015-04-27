@@ -63,6 +63,8 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
         localStorage["ids"] = JSON.stringify(ids);
       } else {
         console.log('in')
+        console.log(ids)
+        console.log(id)
       }
     }
   }
