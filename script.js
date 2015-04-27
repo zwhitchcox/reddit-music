@@ -13,7 +13,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
   }
   $scope.omitRedundancies = true
 
-  $scope.getVids() {
+  $scope.getVids = function() {
     $http.jsonp('http://www.reddit.com/r/music.json?limit=100&jsonp=JSON_CALLBACK&subreddit=jokes')
       .success(function(res) {
         $scope.permalinks = []
