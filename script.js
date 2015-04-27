@@ -46,6 +46,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     $scope.waiting = false
     function onPlayerStateChange(event) {
       if (player.getPlayerState()===0) {
+        addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
         setTimeout(function(){player.playVideo()},3000)
       }
     }
@@ -56,6 +57,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       || localStorage === '') {
         ids = []
       } else {
+
         ids = JSON.parse(localStorage["ids"]);
       }
       ids.push(id)
