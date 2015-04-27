@@ -57,9 +57,10 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       } else {
         ids = JSON.parse(localStorage["ids"]);
       }
-      if (!$.inArray(id, ids))
-      ids.push(id)
-      localStorage["ids"] = JSON.stringify(ids);
+      if (!$.inArray(id, ids)) {
+        ids.push(id)
+        localStorage["ids"] = JSON.stringify(ids);
+      }
     }
   }
 }]);
