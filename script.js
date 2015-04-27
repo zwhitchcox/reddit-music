@@ -40,7 +40,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
         'onStateChange': onPlayerStateChange
       }
     })
-    funciton playVid() {
+    function playVid() {
       player.playVideo()
       addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
     }
