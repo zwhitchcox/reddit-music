@@ -18,7 +18,6 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       $scope.vids = res.data.children.reduce(function(prev,cur) {
         if (/^https?:\/\/(www\.)?youtube/.test(cur.data.url)) {
           var id = getJsonFromUrl(cur.data.url.substr(30)).v
-          console.log(id,!~JSON.parse(localStorage["ids"]).indexOf(id))
           if (!~JSON.parse(localStorage["ids"]).indexOf(id) || !$scope.omitRedundancies) {
             $scope.permalinks.push({title:cur.data.title,uri:cur.data.permalink})
             prev.push(id)
@@ -41,17 +40,19 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
         'onStateChange': onPlayerStateChange
       }
     })
-
-    // 4. The API will call this function when the video player is ready.
+    funciton playVid() {
+      player.playVideo()
+      addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
+    }
     function onPlayerReady(event) {
       player.cuePlaylist($scope.vids)
-      event.target.playVideo();
+      playVid()
     }
     $scope.waiting = false
     function onPlayerStateChange(event) {
       if (player.getPlayerState()===0) {
-        addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
-        setTimeout(function(){player.playVideo()},3000)
+
+        setTimeout(function(){playVid()},3000)
       }
     }
     function addVidIdToStorage (id) {
