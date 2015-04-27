@@ -51,7 +51,6 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
       }
     }
     function addVidIdToStorage (id) {
-      console.log('added');
       var ids;
       if (localStorage['ids'] === null || localStorage['ids'] ===undefined
       || localStorage === '') {
