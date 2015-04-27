@@ -27,7 +27,6 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
               ids = JSON.parse(localStorage["ids"]);
             }
             if (!~ids.indexOf(id) || !$scope.omitRedundancies) {
-              console.log(cur.data.title, id)
               $scope.permalinks.push({title:cur.data.title,uri:cur.data.permalink})
               prev.push(id)
             }
@@ -57,7 +56,8 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
     }
     $scope.waiting = false
     function onPlayerStateChange(event) {
-      addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)
+      try {addVidIdToStorage(getJsonFromUrl(player.getVideoUrl().substr(30)).v)}
+      catch (e) {}
       if (player.getPlayerState()===0) {
         setTimeout(function(){player.playVideo()},3000)
       }
