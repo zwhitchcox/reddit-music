@@ -21,6 +21,7 @@ app.controller('Ctrl', ['$scope','$resource','$http', function($scope,$resource,
           if (/^https?:\/\/(www\.)?youtube/.test(cur.data.url)) {
             var id = getJsonFromUrl(cur.data.url.substr(30)).v
             if (!~JSON.parse(localStorage["ids"]).indexOf(id) || !$scope.omitRedundancies) {
+              console.log(cur.data.title)
               $scope.permalinks.push({title:cur.data.title,uri:cur.data.permalink})
               prev.push(id)
             }
